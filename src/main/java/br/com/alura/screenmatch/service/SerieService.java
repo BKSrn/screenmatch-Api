@@ -43,7 +43,7 @@ public class SerieService {
 
         if (serie.isPresent()) {
             Serie s = serie.get();
-            return new SerieDTO(s.getId(), s.getTitulo(), s.getTotalTemporadas(), s.getAvaliacao(), s.getGenero(), s.getAtores(), s.getSinopse(), s.getPoster());
+            return converterSerieParaDto(s);
         } else {
             return null;
         }
