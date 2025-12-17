@@ -23,6 +23,7 @@ public class Episodio {
     private Double avaliacao;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataLancamento;
+
     @ManyToOne
     private Serie serie;
 

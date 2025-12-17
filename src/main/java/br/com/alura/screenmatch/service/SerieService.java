@@ -60,14 +60,16 @@ public class SerieService {
         } else {
             return null;
         }
+
     }
 
     public List<EpisodioDTO> getEpisodiosPorTemporada(Long id, int numeroTemporada) {
         Optional<Serie> serieEncontrada = serieRepository.findById(id);
 
         if (serieEncontrada.isPresent()){
+            Serie serie = serieEncontrada.get();
 
-            return serieEncontrada.get().getEpisodios().stream()
+            return serie.getEpisodios().stream()
                     .filter(e -> e.getTemporada() == numeroTemporada)
                     .map(e -> new EpisodioDTO(e.getTitulo(), e.getNumeroEpisodio(), e.getTemporada()))
                     .sorted(Comparator.comparing(EpisodioDTO::numeroEpisodio))
@@ -81,8 +83,9 @@ public class SerieService {
         Optional<Serie> serieEncontrada = serieRepository.findById(id);
 
         if (serieEncontrada.isPresent()){
+            Serie serie = serieEncontrada.get();
 
-            return serieEncontrada.get().getEpisodios().stream()
+            return serie.getEpisodios().stream()
                     .sorted(Comparator.comparing(Episodio::getAvaliacao).reversed())
                     .limit(5)
                     .map(e -> new EpisodioDTO(e.getTitulo(), e.getNumeroEpisodio(), e.getTemporada()))

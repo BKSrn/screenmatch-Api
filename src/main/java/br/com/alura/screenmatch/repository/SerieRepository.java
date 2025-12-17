@@ -16,6 +16,7 @@ public interface SerieRepository extends JpaRepository<Serie, Long> {
     Optional<Serie> findFirstByTituloContainsIgnoreCase(String nomeSerie);
     List<Serie> findByAtoresContainsIgnoreCaseAndAvaliacaoGreaterThanEqual(String nomeAtor, double avaliacao);
     List<Serie> findTop5ByOrderByAvaliacaoDesc();
+
     List<Serie> findByGenero(Categoria categoria);
 
     // Buscar séries com temporadas menor que o parametro e avaliacao maior que o parametro
